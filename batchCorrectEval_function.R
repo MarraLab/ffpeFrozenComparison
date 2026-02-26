@@ -1,8 +1,8 @@
-source("/projects/marralab/cayan_prj/pMedTechComparison/required.R")
+source("required.R")
 
 args <- commandArgs(trailingOnly = TRUE)
 index <- args[1]
-obj_list <- readRDS(paste0("/projects/marralab/cayan_prj/pMedTechComparison/Data/batchCorrection/Objects/", index))
+obj_list <- readRDS(paste0("Data/batchCorrection/Objects/", index))
 
 cfg <- list(
   cell_var    = "cellType_revised",   # cell type label column in meta.data
@@ -304,7 +304,7 @@ evaluate_all <- function(obj_list,
                freshCellType = paste(unique(fresh$cellType_revised), collapse = "|"),
                ffpeCellType = paste(unique(ffpe$cellType_revised), collapse = "|"),
                minNumCells = min(unlist(lapply(obj_list2, ncol))))
-    write_csv(out, paste0("/projects/marralab/scratch/cayan/techComp/Outputs/", index, "_out.csv"))
+    write_csv(out, paste0("Outputs/", index, "_out.csv"))
 }
 
 evaluate_all(obj_list)
